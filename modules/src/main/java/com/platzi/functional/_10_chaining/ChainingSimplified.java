@@ -1,6 +1,6 @@
 package com.platzi.functional._10_chaining;
 
-public class Chaining {
+public class ChainingSimplified {
     public static void main(String[] args) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Hola")
