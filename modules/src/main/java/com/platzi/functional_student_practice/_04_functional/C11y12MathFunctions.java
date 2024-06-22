@@ -1,11 +1,10 @@
 package com.platzi.functional_student_practice._04_functional;
 
-import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
 
-public class MathFunctions {
+public class C11y12MathFunctions {
     public static void main(String[] args) {
 
         System.out.println("////////////////////////////////////////////////////////////////////////////////////");
@@ -62,7 +61,7 @@ public class MathFunctions {
         return x * x;
     }
 
-    static class Student {
+    private static class Student {
         private final double qualification;
         public Student(double qualification) {
             this.qualification = qualification;
