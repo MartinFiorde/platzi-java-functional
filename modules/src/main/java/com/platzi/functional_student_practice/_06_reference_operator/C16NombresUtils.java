@@ -14,7 +14,7 @@ public class C16NombresUtils {
         List<String> teachers = getList("Juan", "Pedro", "Sara", "Gloria");
 
         // 1. Clasic Lambda
-        //Consumer<String> printer = text -> System.out.println(text);
+        //Consumer<String> printer = text -> System.out.println(text)
 
         // 2. Method reference with operator "::"
         Consumer<String> printer = System.out::println;
