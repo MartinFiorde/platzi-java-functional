@@ -17,15 +17,10 @@ public class C8InmutObjWithMutAttributes {
 
         // 3. We make an inmutable list
         List<Persona> lista1 = List.of(p1);
-        List<Persona> lista2 = List.copyOf(lista1);
 
-
-
+        // 4. Try to change mutable element from inmutable list is allowed
         System.out.println("Antes de modificar: " + lista1);
-
-        // Modificando un elemento mutable contenido en la lista1 inmutable
         p1.getDireccion().setCiudad("Los Angeles");
-
         System.out.println("Después de modificar: " + lista1);
 
     }
