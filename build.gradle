@@ -1,5 +1,31 @@
-allprojects {
-    apply plugin: 'java'
+// Plugins que utiliza gradle para definir el tipo de tareas comunes
+plugins {
+    id 'java'
+    id 'application'
+}
 
-    sourceCompatibility = 17
+// Paquete de nuestro programa, usado principalmente en librerias.
+group 'com.platzi'
+version '0.0.1'
+
+// Versión de java que es compatible con el código
+sourceCompatibility = 17
+
+// Nuestra clase principal.
+application {
+    mainClassName = "com.platzi.jobsearch.JobSearch"
+    applicationName = "job-search"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.beust', name: 'jcommander', version: '1.81'
+    implementation group: 'io.github.openfeign', name: 'feign-core', version: '12.3'
+    implementation group: 'io.github.openfeign', name: 'feign-gson', version: '12.3'
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
 }
