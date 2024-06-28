@@ -10,13 +10,16 @@ version '0.0.1'
 
 // Versión de java que es compatible con el código
 java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
 }
 
 // Nuestra clase principal.
 application {
-    mainClassName = "com.platzi.jobsearch.JobSearch"
+    mainClass = "com.platzi.jobsearch.JobSearch"
     applicationName = "job-search"
 }
 
