@@ -14,6 +14,7 @@ public class NombresUtils {
         profesores.forEach(System.out::println);
     }
 
+    @SafeVarargs
     public static <T> List<T> getList(T... elements) {
         return Arrays.asList(elements);
     }
