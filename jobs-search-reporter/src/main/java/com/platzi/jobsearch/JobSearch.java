@@ -27,7 +27,7 @@ public class JobSearch {
                         //En caso de un Optional.empty()
                         .orElse(Collections.emptyList())
                         .stream()
-                        .map(obj -> (CLIArguments) obj);
+                        .map(CLIArguments.class::cast); // map(obj -> (CLIArguments) obj) give same result
 
         //Tomamos nuestro Stream y obtenemos las opciones que se dieron en el CLI
         Optional<CLIArguments> cliOptional = streamOfCLI
