@@ -9,7 +9,10 @@ group 'com.platzi'
 version '0.0.1'
 
 // Versión de java que es compatible con el código
-sourceCompatibility = 17
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 // Nuestra clase principal.
 application {
