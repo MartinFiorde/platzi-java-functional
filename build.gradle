@@ -26,7 +26,7 @@ project(':jobs-search-reporter') {
     version = '0.0.1'
 
     application {
-        mainClass = 'jobs-search-reporter.src.main.java.com.platzi.jobsearch.JobSearch'
+        mainClass = 'com.platzi.jobsearch.JobSearch'
         applicationName = 'job-search'
     }
 
