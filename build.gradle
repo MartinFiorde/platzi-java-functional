@@ -14,8 +14,8 @@ allprojects {
     }
 
     dependencies {
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.3'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.3'
     }
 }
 
@@ -31,8 +31,8 @@ project(':jobs-search-reporter') {
     }
 
     dependencies {
-        implementation 'com.beust:jcommander:1.81'
-        implementation 'io.github.openfeign:feign-core:12.3'
-        implementation 'io.github.openfeign:feign-gson:12.3'
+        implementation 'com.beust:jcommander:1.82'
+        implementation 'io.github.openfeign:feign-core:13.3'
+        implementation 'io.github.openfeign:feign-gson:13.3'
     }
 }

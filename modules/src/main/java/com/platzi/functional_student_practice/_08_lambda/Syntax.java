@@ -4,8 +4,6 @@ import com.platzi.functional_teacher_theory._06_reference_operator.NombresUtils;
 
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
 
 public class Syntax {
@@ -27,7 +25,7 @@ public class Syntax {
 
 
         // no input, 1 return
-        useZeroParameters(() -> 2);
+        System.out.println(useZeroParameters(() -> 2));
 //      SAME AS USING THIS:
 //        useZeroParameters(new ZeroArguments() {
 //            @Override
@@ -38,7 +36,7 @@ public class Syntax {
 
 
         // 1 input, 1 return
-        usePredicate(text -> text.isEmpty());
+        System.out.println(usePredicate(text -> text.isEmpty(), ""));
 //      SAME AS USING THIS:
 //        usePredicate(new Predicate<String>() {
 //            @Override
@@ -49,8 +47,8 @@ public class Syntax {
 
 
         // 2 inputs, 1 return
-        useBiFunction((Integer x, Integer y) -> x * y);
-        useBiFunction((x, y) -> x * y);
+        System.out.println(useBiFunction((Integer x, Integer y) -> x * y, 2, 3));
+        System.out.println(useBiFunction((x, y) -> x * y, 4, 5));
 //      SAME AS USING THIS:
 //        useBiFunction(new BiFunction<>() {
 //            @Override
@@ -66,14 +64,16 @@ public class Syntax {
 
 
         // 2 inputs, 1 return
-        useBiFunction((x, y) -> {
+        System.out.println(useBiFunction((x, y) -> {
             System.out.println("X: " + x + ", Y:" + y);
             return x - y;
-        });
+        }, 6, 7));
 
 
         // no input, no return
-        useNothing(() -> System.out.println("Hola Alumno"));
+        useNothing(() -> {
+        });
+        useNothing(() -> System.out.println("Me ejecute sin recibir ni devolver elementos"));
 //      SAME AS USING THIS:
 //        useNothing(new DoNothing() {
 //            @Override
@@ -84,19 +84,23 @@ public class Syntax {
 
     }
 
-    static void useZeroParameters(ZeroArguments zeroArguments) {
+    static int useZeroParameters(ZeroArguments lamda) {
+        return lamda.get();
         // static class to implement  FunctionalInterface
     }
 
-    static void usePredicate(Predicate<String> predicado) {
+    static boolean usePredicate(Predicate<String> lamda, String text) {
+        return lamda.test(text);
         // static class to implement  FunctionalInterface
     }
 
-    static void useBiFunction(BiFunction<Integer, Integer, Integer> operacion) {
+    static Integer useBiFunction(BiFunction<Integer, Integer, Integer> lamda, Integer x, Integer y) {
+        return lamda.apply(x, y);
         // static class to implement  FunctionalInterface
     }
 
-    static void useNothing(DoNothing doNothing) {
+    static void useNothing(DoNothing lambda) {
+        lambda.nothing();
         // static class to implement  FunctionalInterface
     }
 
