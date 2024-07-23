@@ -2,12 +2,11 @@ package com.platzi.functional_student_practice._08_lambda;
 
 import com.platzi.functional_teacher_theory._06_reference_operator.NombresUtils;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 
-public class Syntax {
+public class C18Syntax {
     public static void main(String[] args) {
 
         System.out.println("////////////////////////////////////////////////////////////////////////////////////");

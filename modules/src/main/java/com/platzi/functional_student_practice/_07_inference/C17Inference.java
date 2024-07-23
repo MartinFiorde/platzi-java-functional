@@ -4,7 +4,7 @@ import com.platzi.functional_teacher_theory._06_reference_operator.NombresUtils;
 
 import java.util.List;
 
-public class Inference {
+public class C17Inference {
     public static void main(String[] args) {
 
         System.out.println("////////////////////////////////////////////////////////////////////////////////////");

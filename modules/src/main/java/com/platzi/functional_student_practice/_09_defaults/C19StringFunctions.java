@@ -1,6 +1,6 @@
 package com.platzi.functional_student_practice._09_defaults;
 
-public class StringFunctions {
+public class C19StringFunctions {
     public static void main(String[] args) {
         System.out.println("////////////////////////////////////////////////////////////////////////////////////");
         System.out.println("\nCLASS 19\n");
