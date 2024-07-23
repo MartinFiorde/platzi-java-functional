@@ -29,6 +29,7 @@ public class C21MathOperations2 {
         // 3. We compose a new function that execute add1MultiplyBy3() BEFORE we square()
         IntUnaryOperator andSquare = add1MultiplyBy3.andThen(square); // idem: y -> square.apply(y)
 
+        System.out.println(multiplyBy3.applyAsInt(5));
         System.out.println(add1MultiplyBy3.applyAsInt(5));
         System.out.println(andSquare.applyAsInt(3));
     }

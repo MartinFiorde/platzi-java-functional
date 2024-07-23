@@ -8,20 +8,20 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.UnaryOperator;
 
 public class Composition {
     /**
      * Dado que las funciones son tipos, podemos almacenarlas como datos en nuestra clase
      */
-    private static Function<String, File> createFile = path -> new File(path);
+    private static final Function<String, File> createFile = File::new; //path -> new File(path)
 
     /**
      * Las funciones pueden ser generadas a partir de una referencia.
      */
-    private static Function<File, List<String>> linesFromFile = Composition::getLinesFromFile;
+    private static final Function<File, List<String>> linesFromFile = Composition::getLinesFromFile;
 
-    private static Function<List<String>, List<String>> filter = list -> {
+    private static final UnaryOperator<List<String>> filter = list -> { //Function<List<String>, List<String>>
         List<String> resultList = new LinkedList<>();
         list.forEach(s -> addIfNotEmpty(resultList, s));
         return resultList;
@@ -55,15 +55,16 @@ public class Composition {
         Function<String, List<String>> createFileAndGetLines = linesFromFile.compose(createFile);
 
         Function<String, List<String>> createFileGetLinesFilter = filter.compose(createFileAndGetLines);
-
         return createFileGetLinesFilter.apply(pathToFile);
 
         //Tambien podriamos haber ejecutado la primer funcion y ejecutar filter con el resultado:
-
-//        List<String> lines = createFileAndGetLines.apply(pathToFile);
-//        return filter.apply(lines);
+        //List<String> lines = createFileAndGetLines.apply(pathToFile)
+        //return filter.apply(lines)
     }
 
+    /**
+     * versión con andThen()
+     */
     static List<String> getLinesWithContent(String pathToFile) {
         return createFile
                 .andThen(linesFromFile)
@@ -80,17 +81,13 @@ public class Composition {
     }
 
     public static void main(String[] args) {
-        String pathToFile = "/path/to/file.extension";
-
-        System.out.println(
-                getLinesWithContentCompose(pathToFile)
-        );
+        String pathToFile = "C:/Users/Martin F - PC Desk/Desktop/file.txt"; // String pathToFile = "/path/to/file.extension"
+        System.out.println(getLinesWithContentCompose(pathToFile));
     }
-
 
     private static List<String> getLinesFromFile(File file) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            return br.lines().collect(Collectors.toList());
+            return br.lines().toList();
         } catch (IOException fileNotFoundEx) {
             fileNotFoundEx.printStackTrace();
         }
@@ -98,6 +95,6 @@ public class Composition {
     }
 
     private static void addIfNotEmpty(List<String> list, String s) {
-        if (s != null && s.length() > 0 && s.trim().length() > 0) list.add(s);
+        if (s != null && !s.trim().isEmpty()) list.add(s);
     }
 }
