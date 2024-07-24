@@ -8,7 +8,7 @@ public class NombresUtils {
     public static void main(String[] args) {
         List<String> profesores = getList("Nicolas", "Juan", "Zulema");
 
-        Consumer<String> printer = text -> System.out.println(text);
+        Consumer<String> printer = System.out::println;
         profesores.forEach(printer);
         System.out.println("//////////");
         profesores.forEach(System.out::println);
