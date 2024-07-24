@@ -1,1 +1,1 @@
-include ":modules", "jobs-search-reporter"
+include "modules", "jobs-search-reporter"
