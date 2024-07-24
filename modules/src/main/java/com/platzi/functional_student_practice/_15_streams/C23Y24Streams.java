@@ -1,6 +1,6 @@
 package com.platzi.functional_student_practice._15_streams;
 
-import com.platzi.functional_teacher_theory._06_reference_operator.NombresUtils;
+import com.platzi.functional_teacher_theory.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +13,7 @@ public class C23Y24Streams {
         System.out.println("\nCLASS 23\n");
 
         // 1. forma comun de trabajar sobre listas, strings y collections
-        List<String> courseList = NombresUtils.getList("Java!", "JavaScript", "FrontEnd", "Backend", "FullStack");
+        List<String> courseList = Utils.getListOf("Java!", "JavaScript", "FrontEnd", "Backend", "FullStack");
         for (String course : Collections.unmodifiableList(courseList)) {
             String newCourseName = course.toLowerCase().replace("!", "!!!");
             System.out.println("1. Cursos bucle sobre lista: " + newCourseName);
