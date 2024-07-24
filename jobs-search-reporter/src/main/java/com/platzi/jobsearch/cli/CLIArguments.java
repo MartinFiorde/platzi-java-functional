@@ -44,7 +44,7 @@ public final class CLIArguments {
     private boolean isMarkdown = false;
 
     @Parameter(
-            names = "--help",
+            names = {"--help", "-h"},
             help = true,
             validateWith = CLIHelpValidator.class,
             description = "Muestra esta ayuda")

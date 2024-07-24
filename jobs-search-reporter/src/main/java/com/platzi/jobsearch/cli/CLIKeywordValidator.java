@@ -11,7 +11,7 @@ import com.beust.jcommander.ParameterException;
 public class CLIKeywordValidator implements IParameterValidator {
     @Override
     public void validate(String name, String value) throws ParameterException {
-        if (!value.matches("^[a-zA-Z]+[0-9]*$")) {
+        if (!value.matches("^[a-zA-Z]+\\d*$")) {
             System.err.println("Keyword: " + value + " no es un Keyword valido, keywords deben ser alfanumericas.\n");
             throw new ParameterException("Only alphanumerics are supported");
         }
