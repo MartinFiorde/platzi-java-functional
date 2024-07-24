@@ -9,20 +9,6 @@ import java.util.function.Supplier;
 
 public interface CommanderFunctions {
     /**
-     * JCommander permite generar opciones de terminal de cualquier clase, por eso el primer parametro es
-     * de tipo Object.
-     *
-     * @param object Clase de la cual se generaran los argumentos de JCommander
-     * @return una instancia de JCommander. Idealmente con CLIArguments como objeto pasado.
-     */
-    static JCommander buildCommander(Object object) {
-        return JCommander
-                .newBuilder()
-                .addObject(object)
-                .build();
-    }
-
-    /**
      * Con esta funcion, facilitamos crear una configuracion inicial de JCommander, pidiendo el nombre del
      * programa y un Supplier de tipo T para los argumentos. Asi podemos usar alguna funcion que nos devuelva
      * un objeto que funcione como argumentos de JCommander.
@@ -33,7 +19,11 @@ public interface CommanderFunctions {
      * @return una instancia de {@link JCommander} ya configurada con el nombre y los argumentos.
      */
     static <T> JCommander buildCommanderWithName(String name, Supplier<T> argumentsSupplier) {
-        JCommander jCommander = buildCommander(argumentsSupplier.get());
+        // JCommander permite generar opciones de terminal de cualquier clase, por eso se le agrega un object con el metodo addObject(...)
+        // argumentsSupplier.get() es la clase de la cual se generaran los argumentos de JCommander
+        // Queda definida una instancia de JCommander. Idealmente con CLIArguments como objeto pasado.
+        JCommander jCommander = JCommander.newBuilder().addObject(argumentsSupplier.get()).build();
+
         jCommander.setProgramName(name);
         return jCommander;
     }
@@ -45,18 +35,14 @@ public interface CommanderFunctions {
     static Optional<List<Object>> parseArguments(
             JCommander jCommander,
             String[] arguments,
-            OnCommandError onCommandError
-    ) {
-        List<Object> result;
+            OnCommandError onCommandError) { // en caso que las validaciones de CLIKeywordValidaror o CLIHelpValidator fallen, se generará un ParameterException
         try {
             jCommander.parse(arguments);
-
             return Optional.of(jCommander.getObjects());
-        } catch (ParameterException exception) {
+        } catch (ParameterException exception) { // atrapará el parameter exception y devuelve un optional vacio
             onCommandError.onError(jCommander);
+            return Optional.empty();
         }
-
-        return Optional.empty();
     }
 
     @FunctionalInterface
